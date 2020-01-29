@@ -93,8 +93,9 @@ sink()
 ```
 
 ## References
-thrreg is based on the source code provided by Bruce E. Hansen
-(https://www.ssc.wisc.edu/~bhansen/progs/ecnmt_00.html).
+thrreg is based on the 
+[source code](https://www.ssc.wisc.edu/~bhansen/progs/ecnmt_00.html) 
+provided by Bruce E. Hansen.
 
 Hansen, B. E. (2000). Sample splitting and threshold estimation.
 *Econometrica*, 68(3):575--603.

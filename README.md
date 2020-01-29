@@ -38,7 +38,6 @@ sink("output/output.tex")
 cat("\\section{First Sample Split}", "\n\n")
 
 ## Test for a Sample Split
-# test_hom <- thr_test_hom(data, "GDPGwth", xi, "GDP1960", var_names)
 test_1_gdp <- thr_test_het(data, "GDPGwth", xi, "GDP1960", var_names)
 test_1_lit <- thr_test_het(data, "GDPGwth", xi, "Literacy", var_names)
 

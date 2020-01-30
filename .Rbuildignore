@@ -1,0 +1,8 @@
+^thrreg\.Rproj$
+^\.Rproj\.user$
+^data-raw$
+^output$
+^LICENSE\.md$
+^test_script\.R$
+^cran-comments\.md$
+^revdep$

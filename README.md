@@ -19,7 +19,8 @@ devtools::install_github("mlkremer/thrreg")
 ```
 
 ## Usage
-This example performs the empirical work reported in Hansen (2000).
+This example performs the empirical work reported in Hansen (2000) and prints 
+the LaTeX output to `output/output.tex`:
 ```r
 library(thrreg)
 
@@ -92,6 +93,29 @@ test_3u_gdp <- thr_test_het(dat_3u, "GDPGwth", xi, "GDP1960")
 test_3u_lit <- thr_test_het(dat_3u, "GDPGwth", xi, "Literacy")
 
 sink()
+```
+
+Compile LaTeX output in directory `output/` via:
+```latex
+\documentclass[a4paper]{scrartcl} %twocolumn %scrartcl, scrreprt, scrbook
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage[table]{xcolor}
+\usepackage{siunitx}
+
+\setlength{\parindent}{0in}
+
+\newcommand{\RedA}{red}
+\newcommand{\RedB}{red!60}
+\newcommand{\RedC}{red!30}
+\newcommand{\BlueA}{blue!75}
+\newcommand{\BlueB}{blue!55}
+\newcommand{\BlueC}{blue!30}
+
+\begin{document}
+\input{output.tex}
+\end{document}
 ```
 
 ## References

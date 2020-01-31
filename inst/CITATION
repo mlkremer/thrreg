@@ -5,11 +5,11 @@ citEntry(entry = "Manual",
   author       = personList(as.person("Marcel Kremer")),
   year         = "2020",
   note         = "R package version 0.1.0",
-  url          = "https://CRAN.R-project.org/package=thrreg",
+  url          = "https://github.com/mlkremer/thrreg",
 
   textVersion  =
   paste("Marcel Kremer (2020).",
         "thrreg: Threshold Regression Model.",
         "R package version 0.1.0.",
-        "https://CRAN.R-project.org/package=thrreg")
+        "https://github.com/mlkremer/thrreg")
 )

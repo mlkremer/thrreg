@@ -8,10 +8,6 @@ It provides three functions:
 * `thr_est()` estimates the threshold and the regression parameters of the threshold model.
 
 ## Installation
-Install release version from CRAN:
-```r
-install.packages("thrreg")
-```
 Install development version from GitHub:
 ```r
 # install.packages("devtools")

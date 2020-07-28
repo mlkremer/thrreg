@@ -15,9 +15,11 @@
 #'     table. Default is \code{colnames(df)}.
 #' @param trim_per Numeric; percentage of sample to trim from ends.
 #'     Default is \code{trim_per = .15}.
-#' @param rep Integer; number of bootstrap replications. Default is \code{rep = 1000}.
-#' @param cr Numeric; confidence level used to plot the critical value in the graph.
-#'     It is not used elsewhere in the analysis. Default is \code{cr = .95}.
+#' @param rep Integer; number of bootstrap replications. Default is
+#'     \code{rep = 1000}.
+#' @param cr Numeric; confidence level used to plot the critical value in the
+#'     graph. It is not used elsewhere in the analysis. Default is
+#'     \code{cr = .95}.
 #' @param graph Logical; graph indicator.
 #'     Set \code{TRUE} (default) to view the graph of the likelihood;
 #'     set \code{FALSE} otherwise.
@@ -219,7 +221,8 @@ thr_test_hom <- function(df, yi, xi, qi, var.names = colnames(df), trim_per = .1
   }
 
   cat(paste0("\\subsection{Testing for a Sample Split, Using ", qname, "}"), "\n")
-  cat("\\subsubsection*{Test of Null of No Threshold Against Alternative of Threshold}", "\n")
+  cat("\\subsubsection*{Test of Null of No Threshold Against Alternative of Threshold}",
+      "\n")
   cat("Under Maintained Assumption of Homoskedastic Errors", "\\\\")
   cat("\\\\\n")
   cat("Number of Bootstrap Replications: ", rep, "\\\\\n")

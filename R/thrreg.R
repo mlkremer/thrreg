@@ -1,4 +1,4 @@
-#' thrreg: Threshold regression model
+#' thrreg: Threshold Regression Model
 #'
 #' thrreg estimates the threshold regression model by Hansen (2000).
 #' It is based on the
@@ -21,6 +21,7 @@
 #' @references
 #'     Hansen, B. E. (2000). Sample splitting and threshold estimation.
 #'     \emph{Econometrica}, 68(3):575--603.
+#'     \url{https://doi.org/10.1111/1468-0262.00124}.
 #'     \url{https://www.ssc.wisc.edu/~bhansen/papers/ecnmt_00.pdf}.
 #'
 #' @seealso Useful links:

@@ -225,7 +225,8 @@ thr_test_het <- function(df, yi, xi, qi, var.names = colnames(df), trim_per = .1
   }
 
   cat(paste0("\\subsection{Testing for a Sample Split, Using ", qname, "}"), "\n")
-  cat("\\subsubsection*{Test of Null of No Threshold Against Alternative of Threshold}", "\n")
+  cat("\\subsubsection*{Test of Null of No Threshold Against Alternative of Threshold}",
+      "\n")
   cat("Allowing Heteroskedastic Errors (White Corrected)", "\\\\")
   cat("\\\\\n")
   cat("Number of Bootstrap Replications: ", rep, "\\\\\n")

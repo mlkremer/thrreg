@@ -121,4 +121,5 @@ provided by Bruce E. Hansen.
 
 Hansen, B. E. (2000). Sample splitting and threshold estimation.
 *Econometrica*, 68(3):575--603.
-https://www.ssc.wisc.edu/~bhansen/papers/ecnmt_00.pdf.
+https://onlinelibrary.wiley.com/doi/10.1111/1468-0262.00124. 
+Open access: https://www.ssc.wisc.edu/~bhansen/papers/ecnmt_00.pdf.

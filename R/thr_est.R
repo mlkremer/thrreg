@@ -38,6 +38,9 @@
 #'     Set \code{signif.level = "colors"} to use red and blue tones for
 #'     statistically significant positive and negative estimates, respectively.
 #'     (see \strong{Note} for LaTeX specification of red and blue tones.)
+#' @param inf.crit Logical; if \code{TRUE}, information criteria (AIC, BIC, HQC)
+#'     for each regime are shown in threshold regression table. Default is
+#'     \code{FALSE}.
 #' @param digits Integer; number of decimal places to be used for estimated
 #'     coefficients in threshold regression table. Default is \code{digits = 3}.
 #'     (Will be used in \code{format(round(x, digits = digits), nsmall = digits)},
@@ -104,13 +107,14 @@
 #'
 thr_est <- function(df, yi, xi, qi, h, test.pvalue, var.names = colnames(df),
                     conf2 = .8, nonpar = 2, graph = TRUE, signif.level = "stars",
+                    inf.crit = FALSE,
                     digits = 3, integer.digits = NULL, digits.thr = digits,
                     header = NULL, output.short = FALSE, signif.legend = TRUE) {
 
   if ((h != 0)*(h != 1)){
     cat("You have entered h = ", h, "\n",
-        "This number must be either 0 (homoskedastic case) or 1 (heteoskedastic)", "\n",
-        "The function will either crash or produce invalid results", "\n")
+        "This number must be either 0 (homoskedastic case) or 1 (heteoskedastic)",
+        "\n", "The function will either crash or produce invalid results", "\n")
   }
   if ((nonpar != 1)*(nonpar != 2)*(h==1)){
     cat("You have entered nonpar = ", nonpar, "\n",
@@ -145,6 +149,13 @@ thr_est <- function(df, yi, xi, qi, h, test.pvalue, var.names = colnames(df),
   }else{ se <- sqrt(diag(mi%*%t(xe)%*%xe%*%mi))}
   vy <- sum((y - mean(y))^2)
   r_2 <- 1-ee/vy
+
+  # MK: Compute additional statistics (adjusted R^2, AIC, BIC, HQC) for linear
+  # model (global OLS estimation, without threshold)
+  r_2_adj <- 1 - (1-r_2)*(n-1)/(n-(k-1)-1)
+  aic <- n*log(ee/n) + 2*k
+  bic <- n*log(ee/n) + k*log(n)
+  hqc <- n*log(ee/n) + 2*k*log(log(n))
 
   qs <- unique(q)
   qn <- length(qs)
@@ -216,15 +227,25 @@ thr_est <- function(df, yi, xi, qi, h, test.pvalue, var.names = colnames(df),
   r2_2 <- 1 - ee2/vy2
   r2_joint <- 1 - (ee1+ee2)/vy
 
-  # MK: Compute additional statistics (adjusted R^2, AIC, BIC, HQC) for each regime
-  r2_adj_1 <- 1 - (1-r2_1)*(n-1)/(n-(k-1)-1)
-  r2_adj_2 <- 1 - (1-r2_2)*(n-1)/(n-(k-1)-1)
-  aic_1 <- n*log(ee1/n) + 2*k
-  aic_2 <- n*log(ee2/n) + 2*k
-  bic_1 <- n*log(ee1/n) + k*log(n)
-  bic_2 <- n*log(ee2/n) + k*log(n)
-  hqc_1 <- n*log(ee1/n) + 2*k*log(log(n))
-  hqc_2 <- n*log(ee2/n) + 2*k*log(log(n))
+  # MK: Compute additional statistics (adjusted R^2, AIC, BIC, HQC) for full
+  # threshold model
+  # factor 2*(k-1)+1 in adjusted R^2: number of regressors (excluding the
+  # constant) + threshold estimate
+  r2_adj_joint <- 1 - (1-r2_joint)*(n-1)/(n-(2*(k-1)+1)-1)
+  aic_joint <- n*log((ee1+ee2)/n) + 2*(2*k+1)
+  bic_joint <- n*log((ee1+ee2)/n) + (2*k+1)*log(n)
+  hqc_joint <- n*log((ee1+ee2)/n) + 2*(2*k+1)*log(log(n))
+
+  # MK: Compute additional statistics (adjusted R^2, AIC, BIC, HQC) for each
+  # regime
+  r2_adj_1 <- 1 - (1-r2_1)*(n1-1)/(n1-(k-1)-1)
+  r2_adj_2 <- 1 - (1-r2_2)*(n2-1)/(n2-(k-1)-1)
+  aic_1 <- n1*log(ee1/n1) + 2*k
+  aic_2 <- n2*log(ee2/n2) + 2*k
+  bic_1 <- n1*log(ee1/n1) + k*log(n1)
+  bic_2 <- n2*log(ee2/n2) + k*log(n2)
+  hqc_1 <- n1*log(ee1/n1) + 2*k*log(log(n1))
+  hqc_2 <- n2*log(ee2/n2) + 2*k*log(log(n2))
 
 
   if (h==0) lr <- (sn-smin)/sighat
@@ -395,6 +416,12 @@ thr_est <- function(df, yi, xi, qi, h, test.pvalue, var.names = colnames(df),
     cat("Sum of Squared Errors:             ", ee, "\\\\\n")
     cat("Residual Variance:                 ", sig, "\\\\\n")
     cat("R-squared:                         ", r_2, "\\\\\n")
+    # MK
+    cat("Adjusted R-squared:                ", r_2_adj, "\\\\\n")
+    cat("AIC:                               ", aic, "\\\\\n")
+    cat("BIC:                               ", bic, "\\\\\n")
+    cat("HQC:                               ", hqc, "\\\\\n")
+    #
     cat("Heteroskedasticity Test (P-Value): ", het_test(e,x), "\\\\\n")
     cat("\n")
 
@@ -410,6 +437,12 @@ thr_est <- function(df, yi, xi, qi, h, test.pvalue, var.names = colnames(df),
     cat("Sum of Squared Errors:             ", (ee1+ee2), "\\\\\n")
     cat("Residual Variance:                 ", sig_jt, "\\\\\n")
     cat("Joint R-squared:                   ", r2_joint, "\\\\\n")
+    # MK
+    cat("Joint Adjusted R-squared:          ", r2_adj_joint, "\\\\\n")
+    cat("Joint AIC:                         ", aic_joint, "\\\\\n")
+    cat("Joint BIC:                         ", bic_joint, "\\\\\n")
+    cat("Joint HQC:                         ", hqc_joint, "\\\\\n")
+    #
     cat("Heteroskedasticity Test (P-Value): ", het_test(ej,x), "\\\\\n")
     cat("\n")
 
@@ -433,7 +466,8 @@ thr_est <- function(df, yi, xi, qi, h, test.pvalue, var.names = colnames(df),
       cat("\\midrule", "\n")
       tbeta1l <- format(beta1l_list[[i]], digits=4)
       tbeta1u <- format(beta1u_list[[i]], digits=4)
-      for (j in 1:k) {cat(xname[j], "  &  ", tbeta1l[j], "  &  ", tbeta1u[j], "\\\\\n")}
+      for (j in 1:k) {cat(xname[j], "  &  ", tbeta1l[j], "  &  ", tbeta1u[j],
+                          "\\\\\n")}
       cat("\\bottomrule", "\\end{tabular}", sep = "\n")
       cat("\\bigskip \n")
       cat("\n")
@@ -444,6 +478,12 @@ thr_est <- function(df, yi, xi, qi, h, test.pvalue, var.names = colnames(df),
     cat("Sum of Squared Errors:             ", ee1, "\\\\\n")
     cat("Residual Variance:                 ", sig1, "\\\\\n")
     cat("R-squared:                         ", r2_1, "\\\\\n")
+    # MK
+    cat("Adjusted R-squared:                ", r2_adj_1, "\\\\\n")
+    cat("AIC:                               ", aic_1, "\\\\\n")
+    cat("BIC:                               ", bic_1, "\\\\\n")
+    cat("HQC:                               ", hqc_1, "\\\\\n")
+    #
     cat("\n")
 
     tit <- paste(qname,"$>$",format(qhat,digits=6),sep="")
@@ -466,7 +506,8 @@ thr_est <- function(df, yi, xi, qi, h, test.pvalue, var.names = colnames(df),
       cat("\\midrule", "\n")
       tbeta2l <- format(beta2l_list[[i]], digits=4)
       tbeta2u <- format(beta2u_list[[i]], digits=4)
-      for (j in 1:k) {cat(xname[j], "  &  ", tbeta2l[j], "  &  ", tbeta2u[j], "\\\\\n")}
+      for (j in 1:k) {cat(xname[j], "  &  ", tbeta2l[j], "  &  ", tbeta2u[j],
+                          "\\\\\n")}
       cat("\\bottomrule", "\\end{tabular}", sep = "\n")
       cat("\\bigskip \n")
       cat("\n")
@@ -477,6 +518,12 @@ thr_est <- function(df, yi, xi, qi, h, test.pvalue, var.names = colnames(df),
     cat("Sum of Squared Errors:             ", ee2, "\\\\\n")
     cat("Residual Variance:                 ", sig2, "\\\\\n")
     cat("R-squared:                         ", r2_2, "\\\\\n")
+    # MK
+    cat("Adjusted R-squared:                ", r2_adj_2, "\\\\\n")
+    cat("AIC:                               ", aic_2, "\\\\\n")
+    cat("BIC:                               ", bic_2, "\\\\\n")
+    cat("HQC:                               ", hqc_2, "\\\\\n")
+    #
     cat ("\n")
 
   }
@@ -520,17 +567,20 @@ thr_est <- function(df, yi, xi, qi, h, test.pvalue, var.names = colnames(df),
     integer.digits <- max(nchar(n1), nchar(n2))
   }
 
-  # MK: Summarizing threshold regression table with Regime 1 (left) and Regime 2 (right)
+  # MK: Summarizing threshold regression table with Regime 1 (left) and
+  # Regime 2 (right)
   if (output.short == FALSE) {
     cat("\\subsubsection*{Threshold Regression Table}", "\n")
   }
-  cat(paste0("\\begin{tabular}{l*{2}{S[table-format=", integer.digits, ".", digits,"]r}}"),
+  cat(paste0("\\begin{tabular}{l*{2}{S[table-format=", integer.digits, ".",
+             digits,"]r}}"),
       "\\toprule", sep = "\n")
   if (!is.null(header)) {
     cat("&", paste0("\\multicolumn{4}{c}{", header, "}"), "\\\\\n")
     cat("\\cmidrule(lr){2-5}", "\n")
   }
-  cat("&", "\\multicolumn{2}{c}{Regime 1}", "&", "\\multicolumn{2}{c}{Regime 2}", "\\\\\n")
+  cat("&", "\\multicolumn{2}{c}{Regime 1}", "&", "\\multicolumn{2}{c}{Regime 2}",
+      "\\\\\n")
   cat("\\cmidrule(lr){2-3}", "\\cmidrule(lr){4-5}", sep = "\n")
   cat("&", paste0("\\multicolumn{2}{c}{", qname, tstars_thr, " $\\leq$ ",
                   format(round(qhat, digits=digits.thr), nsmall=digits.thr), "}"),
@@ -538,7 +588,8 @@ thr_est <- function(df, yi, xi, qi, h, test.pvalue, var.names = colnames(df),
                   format(round(qhat, digits=digits.thr), nsmall=digits.thr), "}"),
       "\\\\\n")
   cat("\\cmidrule(lr){2-3}", "\\cmidrule(lr){4-5}", sep = "\n")
-  cat("{Variable}", "&", "{Estimate}", "&", "{Std error}", "&", "{Estimate}", "&", "{Std error}", "\\\\\n")
+  cat("{Variable}", "&", "{Estimate}", "&", "{Std error}", "&", "{Estimate}", "&",
+      "{Std error}", "\\\\\n")
   cat("\\midrule", "\n")
   tbeta1 <- format(round(beta1, digits=digits), nsmall=digits)
   tse1 <- format(round(se1, digits=digits), nsmall=digits)
@@ -565,10 +616,13 @@ thr_est <- function(df, yi, xi, qi, h, test.pvalue, var.names = colnames(df),
   # cat("Residual Variance ", "  &  ", sig1, "  &  & ", sig2, "  &  ", "\\\\\n")
   # cat("$R^2$ ", "  &  ", r2_1, "  &  & ", r2_2, "  &  ", "\\\\\n")
   cat("$R^2_\\text{adj}$", "&", r2_adj_1, "& &", r2_adj_2, "&", "\\\\\n")
-  # cat("AIC", "&", aic_1, "& &", aic_2, "&", "\\\\\n")
-  # cat("BIC", "&", bic_1, "& &", bic_2, "&", "\\\\\n")
-  # cat("HQC", "&", hqc_1, "& &", hqc_2, "&", "\\\\\n")
+  if (inf.crit == TRUE) {
+    cat("AIC", "&", aic_1, "& &", aic_2, "&", "\\\\\n")
+    cat("BIC", "&", bic_1, "& &", bic_2, "&", "\\\\\n")
+    cat("HQC", "&", hqc_1, "& &", hqc_2, "&", "\\\\\n")
+  }
   cat("\\bottomrule", "\\end{tabular}", sep = "\n")
+
   if (signif.legend == TRUE) {
     cat("\\smallskip \\\\\n")
     if (signif.level == "stars") {
@@ -580,7 +634,6 @@ thr_est <- function(df, yi, xi, qi, h, test.pvalue, var.names = colnames(df),
           sep = "\n")
     }
   }
-  cat("\n")
 
   qhat
 

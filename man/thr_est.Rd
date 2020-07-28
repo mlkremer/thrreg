@@ -16,6 +16,7 @@ thr_est(
   nonpar = 2,
   graph = TRUE,
   signif.level = "stars",
+  inf.crit = FALSE,
   digits = 3,
   integer.digits = NULL,
   digits.thr = digits,
@@ -70,6 +71,10 @@ Set \code{signif.level = "stars"} (default) to use stars:
 Set \code{signif.level = "colors"} to use red and blue tones for
 statistically significant positive and negative estimates, respectively.
 (see \strong{Note} for LaTeX specification of red and blue tones.)}
+
+\item{inf.crit}{Logical; if \code{TRUE}, information criteria (AIC, BIC, HQC)
+for each regime are shown in threshold regression table. Default is
+\code{FALSE}.}
 
 \item{digits}{Integer; number of decimal places to be used for estimated
 coefficients in threshold regression table. Default is \code{digits = 3}.
@@ -131,6 +136,7 @@ qhat
 \references{
 Hansen, B. E. (2000). Sample splitting and threshold estimation.
     \emph{Econometrica}, 68(3):575--603.
+    \url{https://doi.org/10.1111/1468-0262.00124}.
     \url{https://www.ssc.wisc.edu/~bhansen/papers/ecnmt_00.pdf}.
 }
 \seealso{

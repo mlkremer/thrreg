@@ -1,4 +1,14 @@
-# thrreg 0.1.0 (January 29, 2020) 
+# thrreg 0.1.1 (July 28, 2020)
+
+### `thr_est()`
+* New argument: `inf.crit`
+* Compute additional statistics (adjusted R^2, AIC, BIC, HQC) for linear model
+* Compute additional statistics (joint adjusted R^2, joint AIC, joint BIC, 
+  joint HQC) for full threshold model
+
+
+
+# thrreg 0.1.0 (January 29, 2020)
 
 Updates and changes in functions compared to 
 [original source code](https://www.ssc.wisc.edu/~bhansen/progs/ecnmt_00.html) 

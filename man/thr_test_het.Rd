@@ -37,10 +37,12 @@ table. Default is \code{colnames(df)}.}
 \item{trim_per}{Numeric; percentage of sample to trim from ends.
 Default is \code{trim_per = .15}.}
 
-\item{rep}{Integer; number of bootstrap replications. Default is \code{rep = 1000}.}
+\item{rep}{Integer; number of bootstrap replications. Default is
+\code{rep = 1000}.}
 
-\item{cr}{Numeric; confidence level used to plot the critical value in the graph.
-It is not used elsewhere in the analysis. Default is \code{cr = .95}.}
+\item{cr}{Numeric; confidence level used to plot the critical value in the
+graph. It is not used elsewhere in the analysis. Default is
+\code{cr = .95}.}
 
 \item{graph}{Logical; graph indicator.
 Set \code{TRUE} (default) to view the graph of the likelihood;
@@ -109,6 +111,7 @@ output$p_value
 \references{
 Hansen, B. E. (2000). Sample splitting and threshold estimation.
     \emph{Econometrica}, 68(3):575--603.
+    \url{https://doi.org/10.1111/1468-0262.00124}.
     \url{https://www.ssc.wisc.edu/~bhansen/papers/ecnmt_00.pdf}.
 }
 \seealso{

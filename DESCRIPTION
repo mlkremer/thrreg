@@ -7,7 +7,8 @@ Authors@R: c(
            comment = c(ORCID = "0000-0001-9130-7670")),
     person("Bruce E.", "Hansen", role = "ctb", 
            email = "behansen@wisc.edu"))
-Description: Estimates the threshold regression model by Hansen (2000).
+Description: Estimates the threshold regression model by Hansen (2000) 
+    <doi:10.1111/1468-0262.00124>.
 License: MIT + file LICENSE
 URL: https://github.com/mlkremer/thrreg
 BugReports: https://github.com/mlkremer/thrreg/issues

@@ -1,0 +1,514 @@
+\section{First Sample Split} 
+
+\subsection{Testing for a Sample Split, Using GDP\_1960} 
+\subsubsection*{Test of Null of No Threshold Against Alternative of Threshold} 
+Allowing Heteroskedastic Errors (White Corrected) \\\\
+Number of Bootstrap Replications:  1000 \\
+Trimming Percentage:               0.15 \\\\
+Threshold Variable:                 GDP\_1960 \\
+Threshold Estimate:                833 \\
+LM-test for no threshold:          12.60184 \\
+Bootstrap P-Value:                 0.091 \\
+
+\subsection{Testing for a Sample Split, Using Literacy} 
+\subsubsection*{Test of Null of No Threshold Against Alternative of Threshold} 
+Allowing Heteroskedastic Errors (White Corrected) \\\\
+Number of Bootstrap Replications:  1000 \\
+Trimming Percentage:               0.15 \\\\
+Threshold Variable:                 Literacy \\
+Threshold Estimate:                10 \\
+LM-test for no threshold:          10.78627 \\
+Bootstrap P-Value:                 0.208 \\
+
+\subsection{Estimate Sample Split, Using GDP\_1960} 
+
+\subsubsection{Global OLS Estimation, Without Threshold} 
+Dependent Variable:      GDP\_Gwth \\
+Heteroskedasticity Correction Used \\\\
+\begin{tabular}{l*{2}{r}}
+\toprule
+Variable    &   Estimate     &   St Error \\
+\midrule 
+Const   &    2.8262   &   0.72473 \\
+Log\_GDP\_1960   &   -0.2816   &   0.05335 \\
+Log\_Inv/GDP   &    0.4919   &   0.10435 \\
+Log\_Pop\_Gwth   &   -0.5467   &   0.23278 \\
+Log\_School   &    0.2395   &   0.06560 \\
+\bottomrule
+\end{tabular}
+\bigskip \\
+Observations:                       96 \\
+Degrees of Freedom:                 91 \\
+Sum of Squared Errors:              9.622743 \\
+Residual Variance:                  0.1057444 \\
+R-squared:                          0.4805041 \\
+Adjusted R-squared:                 0.4576691 \\
+AIC:                                -210.821 \\
+BIC:                                -197.9993 \\
+HQC:                                -205.6382 \\
+Heteroskedasticity Test (P-Value):  0.2008698 \\
+
+\subsubsection{Threshold Estimation} 
+Threshold Variable:                 GDP\_1960 \\
+Threshold Estimate:                 863 \\
+0.9 Confidence Interval:           [594, 1794] \\
+0.95 Confidence Interval:           [594, 1794] \\
+0.99 Confidence Interval:           [539, 4802] \\
+Sum of Squared Errors:              8.024881 \\
+Residual Variance:                  0.09331257 \\
+Joint R-squared:                    0.5667667 \\
+Joint Adjusted R-squared:           0.5214283 \\
+Joint AIC:                          -216.2529 \\
+Joint BIC:                          -188.0451 \\
+Joint HQC:                          -204.8509 \\
+Heteroskedasticity Test (P-Value):  0.1565995 \\
+
+\subsubsection*{Regime 1: GDP\_1960$\leq$863 } 
+Parameter Estimates \\
+\begin{tabular}{l*{2}{r}}
+\toprule
+Variable    &   Estimate     &   St Error \\
+\midrule 
+Const   &    4.31203   &   1.62680 \\
+Log\_GDP\_1960   &   -0.65697   &   0.21762 \\
+Log\_Inv/GDP   &    0.22774   &   0.07160 \\
+Log\_Pop\_Gwth   &   -0.29487   &   0.33678 \\
+Log\_School   &    0.01806   &   0.09686 \\
+\bottomrule
+\end{tabular}
+\bigskip 
+
+0.9 Confidence Regions for Parameters \\
+\begin{tabular}{l*{2}{r}}
+\toprule
+Variable   &    Low            &   High \\
+\midrule 
+Const   &    1.18837   &    8.9645 \\
+Log\_GDP\_1960   &   -1.20170   &   -0.2184 \\
+Log\_Inv/GDP   &    0.06085   &    0.5363 \\
+Log\_Pop\_Gwth   &   -1.37220   &    0.7700 \\
+Log\_School   &   -0.21504   &    0.4116 \\
+\bottomrule
+\end{tabular}
+\bigskip 
+
+0.95 Confidence Regions for Parameters \\
+\begin{tabular}{l*{2}{r}}
+\toprule
+Variable   &    Low            &   High \\
+\midrule 
+Const   &    0.68755   &    9.5624 \\
+Log\_GDP\_1960   &   -1.25007   &   -0.1465 \\
+Log\_Inv/GDP   &    0.02471   &    0.5740 \\
+Log\_Pop\_Gwth   &   -1.51316   &    0.9225 \\
+Log\_School   &   -0.24701   &    0.4397 \\
+\bottomrule
+\end{tabular}
+\bigskip 
+
+0.99 Confidence Regions for Parameters \\
+\begin{tabular}{l*{2}{r}}
+\toprule
+Variable   &    Low            &   High \\
+\midrule 
+Const   &   -0.31408   &   10.75843 \\
+Log\_GDP\_1960   &   -1.34682   &   -0.00266 \\
+Log\_Inv/GDP   &   -0.04758   &    0.64950 \\
+Log\_Pop\_Gwth   &   -1.79508   &    1.22748 \\
+Log\_School   &   -0.31094   &    0.49604 \\
+\bottomrule
+\end{tabular}
+\bigskip 
+
+Observations:                       18 \\
+Degrees of Freedom:                 13 \\
+Sum of Squared Errors:              0.6742722 \\
+Residual Variance:                  0.05186709 \\
+R-squared:                          0.5165107 \\
+Adjusted R-squared:                 0.3677448 \\
+AIC:                                -49.12088 \\
+BIC:                                -44.66902 \\
+HQC:                                -48.50703 \\
+
+\subsubsection*{Regime 2: GDP\_1960$>$863 } 
+Parameter Estimates \\
+\begin{tabular}{l*{2}{r}}
+\toprule
+Variable    &   Estimate     &   St Error \\
+\midrule 
+Const   &    3.6631   &   0.71905 \\
+Log\_GDP\_1960   &   -0.3234   &   0.06144 \\
+Log\_Inv/GDP   &    0.4957   &   0.14497 \\
+Log\_Pop\_Gwth   &   -0.4877   &   0.25532 \\
+Log\_School   &    0.3569   &   0.08997 \\
+\bottomrule
+\end{tabular}
+\bigskip 
+
+0.9 Confidence Regions for Parameters \\
+\begin{tabular}{l*{2}{r}}
+\toprule
+Variable    &   Low            &   High \\
+\midrule 
+Const   &    2.15721   &    5.48302 \\
+Log\_GDP\_1960   &   -0.50226   &   -0.20099 \\
+Log\_Inv/GDP   &    0.22373   &    0.91018 \\
+Log\_Pop\_Gwth   &   -0.98136   &   -0.05348 \\
+Log\_School   &   -0.05371   &    0.52305 \\
+\bottomrule
+\end{tabular}
+\bigskip 
+
+0.95 Confidence Regions for Parameters \\
+\begin{tabular}{l*{2}{r}}
+\toprule
+Variable    &   Low            &   High \\
+\midrule 
+Const   &    1.8448   &    5.79544 \\
+Log\_GDP\_1960   &   -0.5230   &   -0.18203 \\
+Log\_Inv/GDP   &    0.1823   &    0.95436 \\
+Log\_Pop\_Gwth   &   -1.0685   &    0.03369 \\
+Log\_School   &   -0.0848   &    0.54919 \\
+\bottomrule
+\end{tabular}
+\bigskip 
+
+0.99 Confidence Regions for Parameters \\
+\begin{tabular}{l*{2}{r}}
+\toprule
+Variable    &   Low            &   High \\
+\midrule 
+Const   &    1.21994   &    6.4203 \\
+Log\_GDP\_1960   &   -0.56451   &   -0.1441 \\
+Log\_Inv/GDP   &    0.09581   &    1.0427 \\
+Log\_Pop\_Gwth   &   -1.24285   &    0.2080 \\
+Log\_School   &   -0.14698   &    0.6015 \\
+\bottomrule
+\end{tabular}
+\bigskip 
+
+Observations:                       78 \\
+Degrees of Freedom:                 73 \\
+Sum of Squared Errors:              7.350609 \\
+Residual Variance:                  0.1006933 \\
+R-squared:                          0.5492007 \\
+Adjusted R-squared:                 0.5244994 \\
+AIC:                                -174.2302 \\
+BIC:                                -162.4467 \\
+HQC:                                -169.513 \\
+
+\subsubsection*{Threshold Regression Table} 
+\begin{tabular}{l*{2}{S[table-format=2.3]r}}
+\toprule
+& \multicolumn{4}{c}{GDP\_Gwth} \\
+\cmidrule(lr){2-5} 
+& \multicolumn{2}{c}{Regime 1} & \multicolumn{2}{c}{Regime 2} \\
+\cmidrule(lr){2-3}
+\cmidrule(lr){4-5}
+& \multicolumn{2}{c}{GDP\_1960$^\ast$ $\leq$ 863} & \multicolumn{2}{c}{GDP\_1960$^\ast$ $>$ 863} \\
+\cmidrule(lr){2-3}
+\cmidrule(lr){4-5}
+{Variable} & {Estimate} & {Std error} & {Estimate} & {Std error} \\
+\midrule 
+Const &  4.312$^{\ast\ast}$ & (1.627) &  3.663$^{\ast\ast\ast}$ & (0.719) \\
+Log\_GDP\_1960 & -0.657$^{\ast\ast\ast}$ & (0.218) & -0.323$^{\ast\ast\ast}$ & (0.061) \\
+Log\_Inv/GDP &  0.228$^{\ast\ast}$ & (0.072) &  0.496$^{\ast\ast\ast}$ & (0.145) \\
+Log\_Pop\_Gwth & -0.295 & (0.337) & -0.488$^\ast$ & (0.255) \\
+Log\_School &  0.018 & (0.097) &  0.357 & (0.090) \\
+\midrule 
+\#Obs & 18 & & 78 & \\
+$R^2_\text{adj}$ & 0.368 & & 0.524 & \\
+\bottomrule
+\end{tabular}
+\smallskip \\
+$^\ast p<0.1$; $^{\ast\ast} p<0.05$; $^{\ast\ast\ast} p<0.01$ 
+\section{Second Sample Split: Subsample, Incomes below 863}
+
+\subsection{Testing for a Sample Split, Using GDP\_1960} 
+\subsubsection*{Test of Null of No Threshold Against Alternative of Threshold} 
+Allowing Heteroskedastic Errors (White Corrected) \\\\
+Number of Bootstrap Replications:  1000 \\
+Trimming Percentage:               0.15 \\\\
+Threshold Variable:                 GDP\_1960 \\
+Threshold Estimate:                594 \\
+LM-test for no threshold:          7.103181 \\
+Bootstrap P-Value:                 0.401 \\
+
+\subsection{Testing for a Sample Split, Using Literacy} 
+\subsubsection*{Test of Null of No Threshold Against Alternative of Threshold} 
+Allowing Heteroskedastic Errors (White Corrected) \\\\
+Number of Bootstrap Replications:  1000 \\
+Trimming Percentage:               0.15 \\\\
+Threshold Variable:                 Literacy \\
+Threshold Estimate:                10 \\
+LM-test for no threshold:          5.16476 \\
+Bootstrap P-Value:                 0.844 \\
+
+\section{Second Sample Split: Subsample, Incomes above 863}
+
+\subsection{Testing for a Sample Split, Using GDP\_1960} 
+\subsubsection*{Test of Null of No Threshold Against Alternative of Threshold} 
+Allowing Heteroskedastic Errors (White Corrected) \\\\
+Number of Bootstrap Replications:  1000 \\
+Trimming Percentage:               0.15 \\\\
+Threshold Variable:                 GDP\_1960 \\
+Threshold Estimate:                1410 \\
+LM-test for no threshold:          11.00934 \\
+Bootstrap P-Value:                 0.157 \\
+
+\subsection{Testing for a Sample Split, Using Literacy} 
+\subsubsection*{Test of Null of No Threshold Against Alternative of Threshold} 
+Allowing Heteroskedastic Errors (White Corrected) \\\\
+Number of Bootstrap Replications:  1000 \\
+Trimming Percentage:               0.15 \\\\
+Threshold Variable:                 Literacy \\
+Threshold Estimate:                57 \\
+LM-test for no threshold:          12.09135 \\
+Bootstrap P-Value:                 0.073 \\
+
+\subsection{Estimate Sample Split, Using Literacy} 
+
+\subsubsection{Global OLS Estimation, Without Threshold} 
+Dependent Variable:      GDP\_Gwth \\
+Heteroskedasticity Correction Used \\\\
+\begin{tabular}{l*{2}{r}}
+\toprule
+Variable    &   Estimate     &   St Error \\
+\midrule 
+Const   &    3.6631   &   0.71905 \\
+Log\_GDP\_1960   &   -0.3234   &   0.06144 \\
+Log\_Inv/GDP   &    0.4957   &   0.14497 \\
+Log\_Pop\_Gwth   &   -0.4877   &   0.25532 \\
+Log\_School   &    0.3569   &   0.08997 \\
+\bottomrule
+\end{tabular}
+\bigskip \\
+Observations:                       78 \\
+Degrees of Freedom:                 73 \\
+Sum of Squared Errors:              7.350609 \\
+Residual Variance:                  0.1006933 \\
+R-squared:                          0.5492007 \\
+Adjusted R-squared:                 0.5244994 \\
+AIC:                                -174.2302 \\
+BIC:                                -162.4467 \\
+HQC:                                -169.513 \\
+Heteroskedasticity Test (P-Value):  0.362994 \\
+
+\subsubsection{Threshold Estimation} 
+Threshold Variable:                 Literacy \\
+Threshold Estimate:                 45 \\
+0.9 Confidence Interval:           [29, 57] \\
+0.95 Confidence Interval:           [19, 57] \\
+0.99 Confidence Interval:           [14, 62] \\
+Sum of Squared Errors:              6.198249 \\
+Residual Variance:                  0.09115072 \\
+Joint R-squared:                    0.6198728 \\
+Joint Adjusted R-squared:           0.5695619 \\
+Joint AIC:                          -175.5305 \\
+Joint BIC:                          -149.6067 \\
+Joint HQC:                          -165.1527 \\
+Heteroskedasticity Test (P-Value):  0.551557 \\
+
+\subsubsection*{Regime 1: Literacy$\leq$45 } 
+Parameter Estimates \\
+\begin{tabular}{l*{2}{r}}
+\toprule
+Variable    &   Estimate     &   St Error \\
+\midrule 
+Const   &    2.0923   &   1.8702 \\
+Log\_GDP\_1960   &   -0.1163   &   0.1649 \\
+Log\_Inv/GDP   &    0.1726   &   0.2161 \\
+Log\_Pop\_Gwth   &   -0.3902   &   0.5161 \\
+Log\_School   &    0.4525   &   0.1168 \\
+\bottomrule
+\end{tabular}
+\bigskip 
+
+0.9 Confidence Regions for Parameters \\
+\begin{tabular}{l*{2}{r}}
+\toprule
+Variable   &    Low            &   High \\
+\midrule 
+Const   &   -1.2736   &   5.5508 \\
+Log\_GDP\_1960   &   -0.4185   &   0.2859 \\
+Log\_Inv/GDP   &   -0.2427   &   0.5956 \\
+Log\_Pop\_Gwth   &   -1.4324   &   0.7110 \\
+Log\_School   &    0.2389   &   0.7024 \\
+\bottomrule
+\end{tabular}
+\bigskip 
+
+0.95 Confidence Regions for Parameters \\
+\begin{tabular}{l*{2}{r}}
+\toprule
+Variable   &    Low            &   High \\
+\midrule 
+Const   &   -1.8538   &   6.1610 \\
+Log\_GDP\_1960   &   -0.4709   &   0.3447 \\
+Log\_Inv/GDP   &   -0.3182   &   0.6555 \\
+Log\_Pop\_Gwth   &   -1.5932   &   0.8683 \\
+Log\_School   &    0.1954   &   0.7460 \\
+\bottomrule
+\end{tabular}
+\bigskip 
+
+0.99 Confidence Regions for Parameters \\
+\begin{tabular}{l*{2}{r}}
+\toprule
+Variable   &    Low            &   High \\
+\midrule 
+Const   &   -3.0144   &   7.3815 \\
+Log\_GDP\_1960   &   -0.5756   &   0.4623 \\
+Log\_Inv/GDP   &   -0.4692   &   0.7878 \\
+Log\_Pop\_Gwth   &   -1.9149   &   1.1831 \\
+Log\_School   &    0.1083   &   0.8331 \\
+\bottomrule
+\end{tabular}
+\bigskip 
+
+Observations:                       30 \\
+Degrees of Freedom:                 25 \\
+Sum of Squared Errors:              2.609994 \\
+Residual Variance:                  0.1043998 \\
+R-squared:                          0.5780366 \\
+Adjusted R-squared:                 0.5105224 \\
+AIC:                                -63.25548 \\
+BIC:                                -56.24949 \\
+HQC:                                -61.0142 \\
+
+\subsubsection*{Regime 2: Literacy$>$45 } 
+Parameter Estimates \\
+\begin{tabular}{l*{2}{r}}
+\toprule
+Variable    &   Estimate     &   St Error \\
+\midrule 
+Const   &    4.31048   &   0.96516 \\
+Log\_GDP\_1960   &   -0.39503   &   0.06103 \\
+Log\_Inv/GDP   &    0.83364   &   0.13937 \\
+Log\_Pop\_Gwth   &   -0.41801   &   0.26957 \\
+Log\_School   &    0.09458   &   0.13489 \\
+\bottomrule
+\end{tabular}
+\bigskip 
+
+0.9 Confidence Regions for Parameters \\
+\begin{tabular}{l*{2}{r}}
+\toprule
+Variable    &   Low            &   High \\
+\midrule 
+Const   &    1.9302   &    5.92850 \\
+Log\_GDP\_1960   &   -0.5140   &   -0.26693 \\
+Log\_Inv/GDP   &    0.4820   &    1.08602 \\
+Log\_Pop\_Gwth   &   -1.0204   &    0.03267 \\
+Log\_School   &   -0.2868   &    0.36155 \\
+\bottomrule
+\end{tabular}
+\bigskip 
+
+0.95 Confidence Regions for Parameters \\
+\begin{tabular}{l*{2}{r}}
+\toprule
+Variable    &   Low            &   High \\
+\midrule 
+Const   &    1.5819   &    6.2292 \\
+Log\_GDP\_1960   &   -0.5354   &   -0.2495 \\
+Log\_Inv/GDP   &    0.4271   &    1.1319 \\
+Log\_Pop\_Gwth   &   -1.1133   &    0.1146 \\
+Log\_School   &   -0.3443   &    0.4021 \\
+\bottomrule
+\end{tabular}
+\bigskip 
+
+0.99 Confidence Regions for Parameters \\
+\begin{tabular}{l*{2}{r}}
+\toprule
+Variable    &   Low            &   High \\
+\midrule 
+Const   &    0.8853   &    6.8305 \\
+Log\_GDP\_1960   &   -0.5783   &   -0.2147 \\
+Log\_Inv/GDP   &    0.3174   &    1.2307 \\
+Log\_Pop\_Gwth   &   -1.2992   &    0.2784 \\
+Log\_School   &   -0.4594   &    0.4985 \\
+\bottomrule
+\end{tabular}
+\bigskip 
+
+Observations:                       48 \\
+Degrees of Freedom:                 43 \\
+Sum of Squared Errors:              3.588255 \\
+Residual Variance:                  0.08344778 \\
+R-squared:                          0.5821175 \\
+Adjusted R-squared:                 0.5432447 \\
+AIC:                                -114.4897 \\
+BIC:                                -105.1337 \\
+HQC:                                -110.954 \\
+
+\subsubsection*{Threshold Regression Table} 
+\begin{tabular}{l*{2}{S[table-format=2.3]r}}
+\toprule
+& \multicolumn{4}{c}{GDP\_Gwth} \\
+\cmidrule(lr){2-5} 
+& \multicolumn{2}{c}{Regime 1} & \multicolumn{2}{c}{Regime 2} \\
+\cmidrule(lr){2-3}
+\cmidrule(lr){4-5}
+& \multicolumn{2}{c}{Literacy$^\ast$ $\leq$ 45} & \multicolumn{2}{c}{Literacy$^\ast$ $>$ 45} \\
+\cmidrule(lr){2-3}
+\cmidrule(lr){4-5}
+{Variable} & {Estimate} & {Std error} & {Estimate} & {Std error} \\
+\midrule 
+Const &  2.092 & (1.870) &  4.310$^{\ast\ast\ast}$ & (0.965) \\
+Log\_GDP\_1960 & -0.116 & (0.165) & -0.395$^{\ast\ast\ast}$ & (0.061) \\
+Log\_Inv/GDP &  0.173 & (0.216) &  0.834$^{\ast\ast\ast}$ & (0.139) \\
+Log\_Pop\_Gwth & -0.390 & (0.516) & -0.418 & (0.270) \\
+Log\_School &  0.453$^{\ast\ast\ast}$ & (0.117) &  0.095 & (0.135) \\
+\midrule 
+\#Obs & 30 & & 48 & \\
+$R^2_\text{adj}$ & 0.511 & & 0.543 & \\
+\bottomrule
+\end{tabular}
+\smallskip \\
+$^\ast p<0.1$; $^{\ast\ast} p<0.05$; $^{\ast\ast\ast} p<0.01$ 
+\section{Third Sample Split: Subsample, Incomes above 863, Literacy below 45}
+
+\subsection{Testing for a Sample Split, Using GDP1960} 
+\subsubsection*{Test of Null of No Threshold Against Alternative of Threshold} 
+Allowing Heteroskedastic Errors (White Corrected) \\\\
+Number of Bootstrap Replications:  1000 \\
+Trimming Percentage:               0.15 \\\\
+Threshold Variable:                 GDP1960 \\
+Threshold Estimate:                1618 \\
+LM-test for no threshold:          7.423359 \\
+Bootstrap P-Value:                 0.529 \\
+
+\subsection{Testing for a Sample Split, Using Literacy} 
+\subsubsection*{Test of Null of No Threshold Against Alternative of Threshold} 
+Allowing Heteroskedastic Errors (White Corrected) \\\\
+Number of Bootstrap Replications:  1000 \\
+Trimming Percentage:               0.15 \\\\
+Threshold Variable:                 Literacy \\
+Threshold Estimate:                26 \\
+LM-test for no threshold:          9.233321 \\
+Bootstrap P-Value:                 0.174 \\
+
+\section{Third Sample Split: Subsample, Incomes above 863, Literacy above 45}
+
+\subsection{Testing for a Sample Split, Using GDP1960} 
+\subsubsection*{Test of Null of No Threshold Against Alternative of Threshold} 
+Allowing Heteroskedastic Errors (White Corrected) \\\\
+Number of Bootstrap Replications:  1000 \\
+Trimming Percentage:               0.15 \\\\
+Threshold Variable:                 GDP1960 \\
+Threshold Estimate:                3493 \\
+LM-test for no threshold:          9.415477 \\
+Bootstrap P-Value:                 0.21 \\
+
+\subsection{Testing for a Sample Split, Using Literacy} 
+\subsubsection*{Test of Null of No Threshold Against Alternative of Threshold} 
+Allowing Heteroskedastic Errors (White Corrected) \\\\
+Number of Bootstrap Replications:  1000 \\
+Trimming Percentage:               0.15 \\\\
+Threshold Variable:                 Literacy \\
+Threshold Estimate:                83 \\
+LM-test for no threshold:          9.327215 \\
+Bootstrap P-Value:                 0.183 \\
+

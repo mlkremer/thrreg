@@ -1,0 +1,18 @@
+Package: thrreg
+Title: Threshold Regression Model
+Version: 0.1.1
+Authors@R: c(
+    person("Marcel", "Kremer", role = c("aut", "cre"),
+           email = "marcel.kremer@uni-due.de",
+           comment = c(ORCID = "0000-0001-9130-7670")),
+    person("Bruce E.", "Hansen", role = "ctb", 
+           email = "behansen@wisc.edu"))
+Description: Estimates the threshold regression model by Hansen (2000) 
+    <doi:10.1111/1468-0262.00124>.
+License: MIT + file LICENSE
+URL: https://github.com/mlkremer/thrreg
+BugReports: https://github.com/mlkremer/thrreg/issues
+Depends: R (>= 3.6.0)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.0.2
